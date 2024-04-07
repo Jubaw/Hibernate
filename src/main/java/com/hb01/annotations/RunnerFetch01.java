@@ -50,31 +50,60 @@ public class RunnerFetch01 {
 
         //Not: HQL ***************************************
 
-        String hqlQuery1 = "FROM Student01";
-        List<Student01> resultList2 = session.createQuery(hqlQuery1, Student01.class).getResultList();
-        for (Student01 student01 : resultList2){
+//        String hqlQuery1 = "FROM Student01";
+//        List<Student01> resultList2 = session.createQuery(hqlQuery1, Student01.class).getResultList();
+//        for (Student01 student01 : resultList2){
+//            System.out.println(student01);
+//        }
+//
+//
+//        //Not: Exercises************************************
+//        //GOREV 1: İsmi 'Doğu Bey' olan kişilerin tüm bilgilerini yazdırın.
+//        //SQL ile yazımı
+//        String sqlQuery2 = "SELECT * FROM t_student01 WHERE student_name = 'Dogu Bey'";
+//        Object[] uniqueResult = (Object[]) session.createSQLQuery(sqlQuery2).uniqueResult();
+//        System.out.println(Arrays.toString(uniqueResult));
+//
+//        System.out.println(uniqueResult[0] + " "+ uniqueResult[1] + " " + uniqueResult[2]);
+//
+//        //Aynı sorguyu HQL ile yazalım
+//        String hqlQuery2 = "FROM Student01 WHERE name = 'Dogu Bey'";
+//        System.out.println(session.createQuery(hqlQuery2,Student01.class).uniqueResult());
+
+
+
+
+        //HQL
+        // HQL --> grade degeri 70 olan ogrencileri getirelim
+        String hqlQuery3 = "SELECT s.id,s.name FROM Student01 s WHERE s.grade=70";
+        List<Object[]> resultList3 = session.createQuery(hqlQuery3).getResultList();
+        for(Object[] objects : resultList3){
+            System.out.println(Arrays.toString(objects));
+        }
+        //idye göre azalan sıralı listeyi görelim
+        String hqlQuery4 = "FROM Student01 s ORDER BY s.id DESC ";
+        List<Student01> resultList4 = session.createQuery(hqlQuery4, Student01.class).getResultList();
+        for (Student01 student01 : resultList4){
             System.out.println(student01);
         }
-
-
-        //Not: Exercises************************************
-        //SQL ile yazımı
-        String sqlQuery2 = "SELECT * FROM t_student01 WHERE student_name = 'Dogu Bey'";
-        Object[] uniqueResult = (Object[]) session.createSQLQuery(sqlQuery2).uniqueResult();
-        System.out.println(Arrays.toString(uniqueResult));
-
-        System.out.println(uniqueResult[0] + " "+ uniqueResult[1] + " " + uniqueResult[2]);
-
-        //Aynı sorguyu HQL ile yazalım
-        String hqlQuery2 = "FROM Student01 WHERE name = 'Dogu Bey'";
-        System.out.println(session.createQuery(hqlQuery2,Student01.class).uniqueResult());
-
-
 
 
         tx.commit();
         session.close();
         sf.close();
+
+
+
+        // !!! get - SQL - HQL Hangisini tercih etmem gerekir ?
+        /*
+                1. get
+                2. HQL
+                3. SQL
+
+                        *   Native SQL hizli olsada eksi yonleri :
+                1) bazi DB'lerde sql syntax'in farkliliklar olabiliyor, Native SQL burada sorun olabilir
+                2) String yapilarin hataya acik olmasi
+         */
 
     }
 
