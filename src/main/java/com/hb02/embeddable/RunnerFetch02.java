@@ -20,6 +20,13 @@ public class RunnerFetch02 {
         System.out.println(student);
         System.out.println(student.getAdress());
 
+        Student02 student2 = session.get(Student02.class,1002);
+        System.out.println(student2);
+        System.out.println(student2.getAdress());
+
+
+
+
 
 
 
