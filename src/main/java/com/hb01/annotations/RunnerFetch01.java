@@ -80,6 +80,10 @@ public class RunnerFetch01 {
         for(Object[] objects : resultList3){
             System.out.println(Arrays.toString(objects));
         }
+        // ya da
+        System.out.println("Lambda");
+        resultList3.forEach(t-> System.out.println(Arrays.toString(t)));
+
         //idye göre azalan sıralı listeyi görelim
         String hqlQuery4 = "FROM Student01 s ORDER BY s.id DESC ";
         List<Student01> resultList4 = session.createQuery(hqlQuery4, Student01.class).getResultList();
