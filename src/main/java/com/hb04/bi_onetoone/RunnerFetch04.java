@@ -43,9 +43,6 @@ public class RunnerFetch04 {
 /*        String hqlQuery2 = "SELECT s.name,d.name from Student04 s LEFT JOIN FETCH Diary04 d ON s.id=d.student";
         List<Object[]> resultList2 = session.createQuery(hqlQuery2).getResultList();
 
-
-
-
         resultList2.forEach(oa->{ // lambda expression
             System.out.println(Arrays.toString(oa));
         })*/;
@@ -53,6 +50,20 @@ public class RunnerFetch04 {
         //!!! TASK : butun ogrenci ve diary bilgilerini getiriyoruz
         String hqlQuery3 ="SELECT s.name,d.name FROM Student04 s FULL JOIN FETCH Diary04 d ON s.id=d.student";
         List<Object[]> resultList3 = session.createQuery(hqlQuery3).getResultList();
+
+        resultList3.forEach(oa->{ // lambda expression
+            System.out.println(Arrays.toString(oa));
+        });
+
+
+
+       /* resultList2.forEach(oa->{ // lambda expression
+            System.out.println(Arrays.toString(oa));
+        })*/;
+
+        //!!! TASK : butun ogrenci ve diary bilgilerini getiriyoruz
+//        String hqlQuery4 ="SELECT s.name,d.name FROM Student04 s FULL JOIN FETCH Diary04 d ON s.id=d.student";
+//        List<Object[]> resultList3 = session.createQuery(hqlQuery3).getResultList();
 
         resultList3.forEach(oa->{ // lambda expression
             System.out.println(Arrays.toString(oa));
