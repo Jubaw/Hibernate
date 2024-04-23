@@ -10,7 +10,6 @@ public class RunnerSave03 {
     public static void main(String[] args) {
 
         Student03 student1 = new Student03();
-
         student1.setId(1001);
         student1.setName("Ahmet");
         student1.setGrade(10);
